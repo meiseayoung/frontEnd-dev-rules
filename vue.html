@@ -356,7 +356,12 @@
   &lt;script&gt;&lt;/script&gt;
 </code></pre>
 </li>
+<li><strong>&#x7981;&#x6B62;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x5185;&#x4E3A;&#x6807;&#x7B7E;&#x5B9A;&#x4E49;id&#x5C5E;&#x6027;</strong></li>
 <li><strong>&#x7981;&#x6B62;&#x5355;&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x884C;&#x6570;&#x8D85;&#x8FC7;500(&#x5EFA;&#x8BAE;&#x62C6;&#x5206;&#x6210;&#x66F4;&#x5C0F;&#x7684;&#x529F;&#x80FD;&#x5355;&#x5143;&#x6216;&#x7EC4;&#x4EF6;&#x5355;&#x5143;)</strong></li>
+<li><strong>&#x5EFA;&#x8BAE;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x884C;&#x6570;&#x5C11;&#x4E8E;200&#x884C;(&#x5EFA;&#x8BAE;&#x62C6;&#x5206;&#x6210;&#x66F4;&#x5C0F;&#x7684;&#x7EC4;&#x4EF6;&#x5355;&#x5143;)</strong></li>
+<li><strong>&#x7EAF;&#x5C55;&#x793A;&#x7C7B;&#x7EC4;&#x4EF6;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x5F0F;&#x7EC4;&#x4EF6;&#x63D0;&#x5347;&#x6027;&#x80FD;<a href="https://cn.vuejs.org/v2/guide/render-function.html#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6" target="_blank">&#x4F7F;&#x7528;&#x6307;&#x5357;</a></strong><br>&#x4EE3;&#x7801;&#x793A;&#x4F8B;:  <pre><code class="lang-vue">  &lt;template functional&gt;&lt;/template&gt;
+</code></pre>
+</li>
 <li><strong>&#x4E3A;&#x6BCF;&#x4E2A;vue&#x7EC4;&#x4EF6;&#x6DFB;&#x52A0;props&#x63CF;&#x8FF0;<a href="https://cn.vuejs.org/v2/style-guide/#Prop-%E5%AE%9A%E4%B9%89-%E5%BF%85%E8%A6%81" target="_blank">vue&#x98CE;&#x683C;&#x6307;&#x5357;</a></strong><br>&#x53CD;&#x6A21;&#x5F0F;&#x793A;&#x4F8B;:<pre><code class="lang-javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
       name: <span class="hljs-string">&apos;custom-person&apos;</span>,
       props:[<span class="hljs-string">&apos;name&apos;</span>,<span class="hljs-string">&apos;age&apos;</span>]
@@ -383,19 +388,29 @@
 </li>
 <li><strong>&#x4F7F;&#x7528;&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#x6765;&#x66FF;&#x4EE3;&#x6A21;&#x677F;&#x5185;&#x590D;&#x6742;&#x7684;&#x63D2;&#x503C;&#x8868;&#x8FBE;</strong><br>&#x53CD;&#x6A21;&#x5F0F;&#x793A;&#x4F8B;:<pre><code class="lang-vue">  &lt;template&gt;
       \{\{this.array.map(item=&gt;return item*2)\}\}
+      &lt;div v-if=&quot;role===0&amp;&amp;type===1&amp;&amp;name===&apos;young&quot;&gt;...&lt;/div&gt;
   &lt;/template&gt;
 </code></pre>
 &#x6700;&#x4F73;&#x5B9E;&#x8DF5;:<pre><code class="lang-vue">&lt;template&gt;
     \{\{this.arrayDouble\}\}
+    &lt;div v-if=&quot;show&quot;&gt;...&lt;/div&gt;
 &lt;/template&gt;
 &lt;script&gt;
     export default {
         data(){
-            array:[1,2,3]
+            array:[1,2,3],
+            role:0,
+            type:1,
+            name:&apos;young&apos;
         },
         computed(){
             arrayDouble:function(){
-                return this.array.map(item=&gt;item*2);
+              return this.array.map(item=&gt;item*2);
+            },
+            show: function(){
+              return this.role===0&amp;&amp;
+                     this.type===1&amp;&amp;
+                     this.name===&apos;young&quot;;
             }
         }
     }
@@ -534,7 +549,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"vue","level":"1.11","depth":1,"next":{"title":"代码注释","level":"1.12","depth":1,"path":"代码注释.md","ref":"代码注释.md","articles":[]},"previous":{"title":"模块","level":"1.10","depth":1,"path":"模块.md","ref":"模块.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"vue.md","mtime":"2019-03-26T06:30:46.211Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-27T05:50:57.547Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"vue","level":"1.11","depth":1,"next":{"title":"代码注释","level":"1.12","depth":1,"path":"代码注释.md","ref":"代码注释.md","articles":[]},"previous":{"title":"模块","level":"1.10","depth":1,"path":"模块.md","ref":"模块.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"vue.md","mtime":"2019-03-27T07:14:01.007Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-27T05:50:57.547Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
